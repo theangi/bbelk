@@ -1,0 +1,60 @@
+{
+  "template" : "tcp_dump_index*",
+  "version" : 1,
+  "settings" : {
+    "index.refresh_interval" : "5s"
+  },
+  "mappings" : {
+    "_default_" : {
+      "@timestamp" : {
+        "type" : "date"
+      },
+      "@version" : {
+        "type" : "keyword"
+      },
+      "dstIP" : {
+        "type" : "ip",
+        "norms" : false
+      },
+      "dstPort" : {
+        "type" : "text",
+        "norms" : false
+      },
+      "geoip" : {
+        "type" : "ip"
+      },
+      "host" : {
+        "type" : "text",
+        "norms" : false
+      },
+      "port" : {
+        "type" : "integer"
+      },
+      "length" : {
+        "type" : "long",
+        "norms" : false
+        }
+      },
+      "message" : {
+        "type" : "text",
+        "norms" : false
+      },
+      "srcIP" : {
+        "type" : "ip",
+        "norms" : false
+      },
+      "srcPort" : {
+        "type" : "ip",
+        "norms" : false
+      },
+      "tags" : {
+        "type" : "text",
+        "norms" : false
+      },
+      "type" : {
+        "type" : "text",
+        "norms" : false
+      }
+    }
+  }
+}

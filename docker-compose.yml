@@ -5,26 +5,23 @@ networks: { elastic_network_stack: {} }
 services:
   
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.6.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
     container_name: elasticsearch
-    # restart: unless-stopped
     ports: ['9200:9200']
     networks: ['elastic_network_stack']
     volumes:
       - 'es_data:/usr/share/elasticsearch/data'
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:6.6.1
+    image: docker.elastic.co/kibana/kibana:7.4.0
     container_name: kibana
-    # restart: unless-stopped
     ports: ['5601:5601']
     networks: ['elastic_network_stack']
     depends_on: ['elasticsearch']
 
   logstash:
-    build: ./logstash-config
+    build: ./logstash
     container_name: logstash
-    # restart: unless-stopped
     networks: ['elastic_network_stack']
     ports: ['5000:5000']
     depends_on: ['elasticsearch']
